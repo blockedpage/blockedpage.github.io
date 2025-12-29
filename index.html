@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Akses Diblokir</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             margin: 0;
@@ -14,7 +15,13 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+
+            /* Blok seleksi teks */
+            user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
         }
+
         .container {
             max-width: 700px;
             padding: 40px;
@@ -22,15 +29,18 @@
             border: 1px solid #dcdcdc;
             text-align: center;
         }
+
         h1 {
             font-size: 28px;
             margin-bottom: 20px;
         }
+
         p {
             font-size: 16px;
             line-height: 1.6;
             margin: 0 0 16px 0;
         }
+
         .footer {
             margin-top: 30px;
             font-size: 14px;
@@ -38,7 +48,12 @@
         }
     </style>
 </head>
-<body>
+
+<body
+    oncontextmenu="return false"
+    onselectstart="return false"
+    ondragstart="return false"
+>
     <div class="container">
         <h1>AKSES KE SITUS INI DIBLOKIR</h1>
         <p>
@@ -57,5 +72,16 @@
             © Pemerintah Republik Indonesia
         </div>
     </div>
+
+    <script>
+        document.addEventListener('keydown', function (e) {
+            if (
+                (e.ctrlKey || e.metaKey) &&
+                ['a', 'c', 'x', 's', 'u'].includes(e.key.toLowerCase())
+            ) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>
